@@ -176,3 +176,24 @@ if not filtered.empty:
 else:
     st.info("No data available for export based on current filters.")
 
+# ----------------------------
+# 🎥 Instructional Video Section
+# ----------------------------
+from pathlib import Path
+import streamlit as st
+
+st.markdown("---")
+st.subheader("🎥 Instructional Video")
+
+# Use Path to locate the video in the assets folder (works locally + Streamlit Cloud)
+video_path = Path("assets/instructional_video.mp4")
+
+if video_path.exists():
+    # Optional: Expanded=True on first load for better visibility
+    with st.expander("▶️ Watch Instructional Video (Click to Expand)", expanded=True):
+        with open(video_path, "rb") as video_file:
+            st.video(video_file.read())
+else:
+    st.warning(f"⚠️ Instructional video not found at: {video_path.resolve()}")
+
+
